@@ -13,7 +13,7 @@ ReactDOM.render(
     <HashRouter>
       <Route path="/" component={App} />
       <Switch>
-        <Route path="login" component={Login} />
+        <Route path="/login" component={Login} />
         <Route path="/" component={Home} />
       </Switch>
     </HashRouter>
