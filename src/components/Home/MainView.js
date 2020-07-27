@@ -1,9 +1,9 @@
-import ArticleList from "../ArticleList";
-import React from "react";
-import { connect } from "react-redux";
+import BabyList from '../BabyList';
+import React from 'react';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
-  articles: state.articles,
+  babies: state.home.babies,
 });
 
 const MainView = (props) => {
@@ -19,7 +19,7 @@ const MainView = (props) => {
         </ul>
       </div>
 
-      <ArticleList articles={props.articles} />
+      <BabyList babies={props.babies} />
     </div>
   );
 };

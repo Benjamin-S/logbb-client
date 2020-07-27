@@ -1,11 +1,11 @@
-import Header from "./components/Header";
-import Home from "./components/Home";
-import React from "react";
-import { connect } from "react-redux";
-import "./App.css";
+import Header from './components/Header';
+import Home from './components/Home';
+import React from 'react';
+import { connect } from 'react-redux';
+import './App.css';
 
 const mapStateToProps = (state) => ({
-  appName: state.appName,
+  appName: state.common.appName,
 });
 
 class App extends React.Component {

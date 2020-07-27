@@ -1,17 +1,18 @@
-import Banner from "./Banner";
-import MainView from "./MainView";
-import React from "react";
-import agent from "../../agent";
-import { connect } from "react-redux";
+import Banner from './Banner';
+import MainView from './MainView';
+import React from 'react';
+import agent from '../../agent';
+import { connect } from 'react-redux';
+import { HOME_PAGE_LOADED } from '../../constants/actionTypes';
 
 const Promise = global.Promise;
 
 const mapStateToProps = (state) => ({
-  appName: state.appName,
+  appName: state.common.appName,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoad: (payload) => dispatch({ type: "HOME_PAGE_LOADED", payload }),
+  onLoad: (payload) => dispatch({ type: HOME_PAGE_LOADED, payload }),
 });
 
 class Home extends React.Component {
