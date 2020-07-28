@@ -1,11 +1,11 @@
-import Header from './components/Header';
-import React from 'react';
-import { connect } from 'react-redux';
-import './App.css';
-import { REDIRECT, APP_LOAD } from './constants/actionTypes';
-import agent from './agent';
-import store from './store';
-import { push } from 'react-router-redux';
+import Header from "./components/Header";
+import React from "react";
+import { connect } from "react-redux";
+// import './App.css';
+import { REDIRECT, APP_LOAD } from "./constants/actionTypes";
+import agent from "./agent";
+import store from "./store";
+import { push } from "react-router-redux";
 
 const mapStateToProps = (state) => ({
   appName: state.common.appName,
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class App extends React.Component {
   componentWillMount() {
-    const token = window.localStorage.getItem('jwt');
+    const token = window.localStorage.getItem("jwt");
     if (token) {
       agent.setToken(token);
     }

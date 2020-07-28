@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -31,7 +31,7 @@ const LoggedOutView = (props) => {
 const LoggedInView = (props) => {
   if (props.currentUser) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
+      <ul className="navbar-nav">
         <li className="nav-item">
           <Link to="" className="nav-link">
             Home
@@ -65,7 +65,7 @@ const LoggedInView = (props) => {
 class Header extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-light">
+      <nav className="navbar navbar-expand-md navbar-light">
         <div className="container">
           <Link to="/" className="navbar-brand">
             {this.props.appName.toLowerCase()}
