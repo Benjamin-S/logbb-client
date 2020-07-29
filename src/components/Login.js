@@ -1,18 +1,24 @@
-import React from 'react';
-import ListErrors from './ListErrors';
-import agent from '../agent';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import ListErrors from "./ListErrors";
+import agent from "../agent";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  UPDATE_FIELD_AUTH,
+  LOGIN,
+  LOGIN_PAGE_UNLOADED,
+} from "../constants/actionTypes";
 
 const mapStateToProps = (state) => ({ ...state.auth });
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeEmail: (value) =>
-    dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'email', value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: "email", value }),
   onChangePassword: (value) =>
-    dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
+    dispatch({ type: UPDATE_FIELD_AUTH, key: "password", value }),
   onSubmit: (email, password) =>
-    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) }),
+    dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
+  onUnload: () => dispatch({ type: LOGIN_PAGE_UNLOADED }),
 });
 
 class Login extends React.Component {
@@ -25,6 +31,10 @@ class Login extends React.Component {
       event.preventDefault();
       this.props.onSubmit(email, password);
     };
+  }
+
+  componentWillUnmount() {
+    this.props.onUnload();
   }
 
   render() {
