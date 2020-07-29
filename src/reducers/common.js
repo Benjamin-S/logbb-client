@@ -1,4 +1,11 @@
-import { LOGIN, REDIRECT, APP_LOAD, REGISTER } from '../constants/actionTypes';
+import {
+  LOGIN,
+  REDIRECT,
+  APP_LOAD,
+  REGISTER,
+  LOGOUT,
+  SETTINGS_SAVED,
+} from '../constants/actionTypes';
 
 const defaultState = {
   appName: 'Logbb',
@@ -16,6 +23,14 @@ export default (state = defaultState, action) => {
       };
     case REDIRECT:
       return { ...state, redirectTo: null };
+    case LOGOUT:
+      return { ...state, redirectTo: '/', token: null, currentUser: null };
+    case SETTINGS_SAVED:
+      return {
+        ...state,
+        redirectTo: action.error ? null : '/',
+        currentUser: action.error ? null : action.payload.user,
+      };
     case LOGIN:
       return {
         ...state,
