@@ -1,7 +1,7 @@
-import BabyList from '../BabyList';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import BabyList from "../BabyList";
+import React from "react";
+// import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
   babies: state.home.babies,
@@ -12,15 +12,10 @@ const MainView = (props) => {
     <div className="col-md-9">
       <div className="feed-toggle">
         <ul className="nav nav-pills outline-active">
-          <li className="nav-item">
-            <Link to="" className="nav-link active">
-              Global Feed
-            </Link>
-          </li>
+          <li className="nav-item"></li>
         </ul>
       </div>
-
-      <BabyList babies={props.babies} />
+      {props.babies && <BabyList babies={props.babies} />}
     </div>
   );
 };

@@ -1,11 +1,11 @@
-import Banner from './Banner';
-import MainView from './MainView';
-import React from 'react';
-import agent from '../../agent';
-import { connect } from 'react-redux';
-import { HOME_PAGE_LOADED } from '../../constants/actionTypes';
+import Banner from "./Banner";
+import MainView from "./MainView";
+import React from "react";
+import agent from "../../agent";
+import { connect } from "react-redux";
+import { HOME_PAGE_LOADED } from "../../constants/actionTypes";
 
-const Promise = global.Promise;
+// const Promise = global.Promise;
 
 const mapStateToProps = (state) => ({
   appName: state.common.appName,

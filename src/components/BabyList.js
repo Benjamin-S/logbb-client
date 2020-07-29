@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const BabyList = (props) => {
   if (!props.babies) {
-    return <div className="article-preview">Loading...</div>;
+    return <div className="baby-preview">Loading...</div>;
   }
 
   if (props.babies.length === 0) {
-    return <div className="article-preview">No babies are here... yet.</div>;
+    return <div className="baby-preview">No babies are here... yet.</div>;
   }
 
   return (

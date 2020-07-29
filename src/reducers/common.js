@@ -5,10 +5,10 @@ import {
   REGISTER,
   LOGOUT,
   SETTINGS_SAVED,
-} from '../constants/actionTypes';
+} from "../constants/actionTypes";
 
 const defaultState = {
-  appName: 'Logbb',
+  appName: "Logbb",
   token: null,
 };
 
@@ -24,30 +24,28 @@ export default (state = defaultState, action) => {
     case REDIRECT:
       return { ...state, redirectTo: null };
     case LOGOUT:
-      return { ...state, redirectTo: '/', token: null, currentUser: null };
+      return { ...state, redirectTo: "/", token: null, currentUser: null };
     case SETTINGS_SAVED:
       return {
         ...state,
-        redirectTo: action.error ? null : '/',
+        redirectTo: action.error ? null : "/",
         currentUser: action.error ? null : action.payload.user,
       };
     case LOGIN:
       return {
         ...state,
-        redirectTo: action.error ? null : '/',
+        redirectTo: action.error ? null : "/",
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.usser,
       };
     case REGISTER:
       return {
         ...state,
-        redirectTo: action.error ? null : '/',
+        redirectTo: action.error ? null : "/",
         token: action.error ? null : action.payload.token,
         currentUser: action.error ? null : action.payload.user,
       };
     default:
-      console.log('Fell through common reducer switch statement');
-      break;
+      return state;
   }
-  return state;
 };

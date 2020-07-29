@@ -1,8 +1,8 @@
-import ListErrors from './ListErrors';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import agent from '../agent';
-import { connect } from 'react-redux';
+import ListErrors from "./ListErrors";
+import React from "react";
+// import { Link } from 'react-router-dom';
+import agent from "../agent";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
   ...state.settings,
@@ -10,9 +10,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickLogout: () => dispatch({ type: 'LOGOUT' }),
+  onClickLogout: () => dispatch({ type: "LOGOUT" }),
   onSubmitForm: (user) =>
-    dispatch({ type: 'SETTINGS_SAVED', payload: agent.Auth.save(user) }),
+    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
 });
 
 class SettingsForm extends React.Component {
@@ -20,11 +20,11 @@ class SettingsForm extends React.Component {
     super();
 
     this.state = {
-      image: '',
-      username: '',
-      bio: '',
-      email: '',
-      password: '',
+      image: "",
+      username: "",
+      bio: "",
+      email: "",
+      password: "",
     };
 
     this.updateState = (field) => (ev) => {
@@ -48,7 +48,7 @@ class SettingsForm extends React.Component {
   componentWillMount() {
     if (this.props.currentUser) {
       Object.assign(this.state, {
-        image: this.props.currentUser.image || '',
+        image: this.props.currentUser.image || "",
         username: this.props.currentUser.username,
         bio: this.props.currentUser.bio,
         email: this.props.currentUser.email,
@@ -60,7 +60,7 @@ class SettingsForm extends React.Component {
     if (nextProps.currentUser) {
       this.setState(
         Object.assign({}, this.state, {
-          image: nextProps.currentUser.image || '',
+          image: nextProps.currentUser.image || "",
           username: nextProps.currentUser.username,
           bio: nextProps.currentUser.bio,
           email: nextProps.currentUser.email,
@@ -79,7 +79,7 @@ class SettingsForm extends React.Component {
               type="text"
               placeholder="URL of profile picture"
               value={this.state.image}
-              onChange={this.updateState('image')}
+              onChange={this.updateState("image")}
             />
           </fieldset>
 
@@ -89,7 +89,7 @@ class SettingsForm extends React.Component {
               type="text"
               placeholder="Username"
               value={this.state.username}
-              onChange={this.updateState('username')}
+              onChange={this.updateState("username")}
             />
           </fieldset>
 
@@ -99,7 +99,7 @@ class SettingsForm extends React.Component {
               rows="8"
               placeholder="Short bio about you"
               value={this.state.bio}
-              onChange={this.updateState('bio')}
+              onChange={this.updateState("bio")}
             ></textarea>
           </fieldset>
 
@@ -109,7 +109,7 @@ class SettingsForm extends React.Component {
               type="email"
               placeholder="Email"
               value={this.state.email}
-              onChange={this.updateState('email')}
+              onChange={this.updateState("email")}
             />
           </fieldset>
 
@@ -119,7 +119,7 @@ class SettingsForm extends React.Component {
               type="password"
               placeholder="New Password"
               value={this.state.password}
-              onChange={this.updateState('password')}
+              onChange={this.updateState("password")}
             />
           </fieldset>
 
