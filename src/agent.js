@@ -1,17 +1,17 @@
-import superagentPromise from "superagent-promise";
-import _superagent from "superagent";
+import superagentPromise from 'superagent-promise';
+import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-let API_ROOT = "http://localhost:3000/api";
-API_ROOT = "http://logbb-api.herokuapp.com/api";
+let API_ROOT = 'http://localhost:3000/api';
+API_ROOT = 'http://logbb-api.herokuapp.com/api';
 
 const responseBody = (res) => res.body;
 
 let token = null;
 const tokenPlugin = (req) => {
   if (token) {
-    req.set("authorization", `Token ${token}`);
+    req.set('authorization', `Token ${token}`);
   }
 };
 
@@ -30,9 +30,11 @@ const Babies = {
 };
 
 const Auth = {
-  current: () => requests.get("/user"),
+  current: () => requests.get('/user'),
   login: (email, password) =>
-    requests.post("/users/login", { user: { email, password } }),
+    requests.post('/users/login', { user: { email, password } }),
+  register: (username, email, password) =>
+    requests.post('/users', { user: { username, email, password } }),
 };
 
 export default {

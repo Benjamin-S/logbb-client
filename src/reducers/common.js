@@ -1,4 +1,4 @@
-import { LOGIN, REDIRECT, APP_LOAD } from '../constants/actionTypes';
+import { LOGIN, REDIRECT, APP_LOAD, REGISTER } from '../constants/actionTypes';
 
 const defaultState = {
   appName: 'Logbb',
@@ -23,7 +23,13 @@ export default (state = defaultState, action) => {
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.usser,
       };
-
+    case REGISTER:
+      return {
+        ...state,
+        redirectTo: action.error ? null : '/',
+        token: action.error ? null : action.payload.token,
+        currentUser: action.error ? null : action.payload.user,
+      };
     default:
       console.log('Fell through common reducer switch statement');
       break;
