@@ -9,6 +9,7 @@ import { HOME_PAGE_LOADED } from "../../constants/actionTypes";
 
 const mapStateToProps = (state) => ({
   appName: state.common.appName,
+  token: state.common.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({

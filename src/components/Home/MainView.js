@@ -15,7 +15,7 @@ const MainView = (props) => {
           <li className="nav-item"></li>
         </ul>
       </div>
-      {props.babies && <BabyList babies={props.babies} />}
+      <BabyList babies={props.babies} />
     </div>
   );
 };

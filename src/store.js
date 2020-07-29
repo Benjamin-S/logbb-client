@@ -1,26 +1,33 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux';
-import logger from 'redux-logger';
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import { promiseMiddleware, localStorageMiddleware } from './middleware';
-import auth from './reducers/auth';
-import common from './reducers/common';
-import home from './reducers/home';
-import settings from './reducers/settings';
+import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { promiseMiddleware, localStorageMiddleware } from "./middleware";
+import createRootReducer from "./reducer";
 
-const reducer = combineReducers({
-  auth,
-  common,
-  home,
-  settings,
-});
+import { createBrowserHistory } from "history";
+import { routerMiddleware } from "connected-react-router";
+
+export const history = createBrowserHistory();
+
+const myRouterMiddleware = routerMiddleware(history);
 
 const getMiddleware = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return applyMiddleware(promiseMiddleware, localStorageMiddleware);
+  if (process.env.NODE_ENV === "production") {
+    return applyMiddleware(
+      myRouterMiddleware,
+      promiseMiddleware,
+      localStorageMiddleware
+    );
   } else {
-    return applyMiddleware(promiseMiddleware, localStorageMiddleware, logger);
+    return applyMiddleware(
+      myRouterMiddleware,
+      promiseMiddleware,
+      localStorageMiddleware,
+      logger
+    );
   }
 };
-const store = createStore(reducer, composeWithDevTools(getMiddleware()));
-
-export default store;
+export const store = createStore(
+  createRootReducer(history),
+  composeWithDevTools(getMiddleware())
+);
