@@ -1,8 +1,8 @@
 import ListErrors from "./ListErrors";
 import React from "react";
-// import { Link } from 'react-router-dom';
 import agent from "../agent";
 import { connect } from "react-redux";
+import { SETTINGS_SAVED, LOGOUT } from "../constants/actionTypes";
 
 const mapStateToProps = (state) => ({
   ...state.settings,
@@ -10,9 +10,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickLogout: () => dispatch({ type: "LOGOUT" }),
+  onClickLogout: () => dispatch({ type: LOGOUT }),
   onSubmitForm: (user) =>
-    dispatch({ type: "SETTINGS_SAVED", payload: agent.Auth.save(user) }),
+    dispatch({ type: SETTINGS_SAVED, payload: agent.Auth.save(user) }),
 });
 
 class SettingsForm extends React.Component {
