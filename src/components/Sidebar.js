@@ -62,21 +62,19 @@ const LoggedInView = (props) => {
   return null;
 };
 
-class Header extends React.Component {
+class Sidebar extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        {/* <div className="container"> */}
-        <Link to="/" className="navbar-brand col-md-3 col-lg-2 mr-0 px-3">
-          {this.props.appName.toLowerCase()}
-        </Link>
-
-        {/* <LoggedOutView currentUser={this.props.currentUser} />
-        <LoggedInView currentUser={this.props.currentUser} /> */}
-        {/* </div> */}
+      <nav className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div className="sidebar-sticky pt-3">
+          {/* <div className="container"> */}
+          <LoggedOutView currentUser={this.props.currentUser} />
+          <LoggedInView currentUser={this.props.currentUser} />
+          {/* </div> */}
+        </div>
       </nav>
     );
   }
 }
 
-export default Header;
+export default Sidebar;

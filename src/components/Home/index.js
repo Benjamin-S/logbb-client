@@ -4,6 +4,7 @@ import React from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import { HOME_PAGE_LOADED } from "../../constants/actionTypes";
+import Sidebar from "../Sidebar";
 
 // const Promise = global.Promise;
 
@@ -22,18 +23,11 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="home-page">
+      <div className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <Banner appName={this.props.appName} />
-
         <div className="container page">
           <div className="row">
             <MainView />
-
-            <div className="col-md-3">
-              <div className="sidebar">
-                <p>Popular Tags</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

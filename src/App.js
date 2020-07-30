@@ -3,7 +3,7 @@ import agent from "./agent";
 import Header from "./components/Header";
 import React from "react";
 import { connect } from "react-redux";
-// import './App.css';
+import "./App.css";
 import { REDIRECT, APP_LOAD } from "./constants/actionTypes";
 import { store } from "./store";
 import { push } from "connected-react-router";
@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Settings from "./components/Settings";
+import Sidebar from "./components/Sidebar";
 
 const mapStateToProps = (state) => ({
   appLoaded: state.common.appLoaded,
@@ -54,12 +55,20 @@ class App extends React.Component {
             currentUser={this.props.currentUser}
             appName={this.props.appName}
           />
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/settings" component={Settings} />
-            <Route exact path="/" component={Home} />
-          </Switch>
+          <div className="container-fluid">
+            <div className="row">
+              <Sidebar
+                currentUser={this.props.currentUser}
+                appName={this.props.appName}
+              />
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/settings" component={Settings} />
+                <Route exact path="/" component={Home} />
+              </Switch>
+            </div>
+          </div>
         </div>
       );
     }
