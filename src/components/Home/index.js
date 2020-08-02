@@ -4,8 +4,6 @@ import React from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import { HOME_PAGE_LOADED } from "../../constants/actionTypes";
-import Sidebar from "../Sidebar";
-
 // const Promise = global.Promise;
 
 const mapStateToProps = (state) => ({
@@ -23,13 +21,9 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div>
         <Banner appName={this.props.appName} />
-        <div className="container page">
-          <div className="row">
-            <MainView />
-          </div>
-        </div>
+        <MainView />
       </div>
     );
   }

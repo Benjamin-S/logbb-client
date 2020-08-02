@@ -4,9 +4,9 @@ import agent from "../agent";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  UPDATE_FIELD_AUTH,
   LOGIN,
   LOGIN_PAGE_UNLOADED,
+  UPDATE_FIELD_BABY,
 } from "../constants/actionTypes";
 import { TextField, Container, Button, Typography } from "@material-ui/core";
 
@@ -14,15 +14,15 @@ const mapStateToProps = (state) => ({ ...state.auth });
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeEmail: (value) =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: "email", value }),
+    dispatch({ type: UPDATE_FIELD_BABY, key: "email", value }),
   onChangePassword: (value) =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: "password", value }),
+    dispatch({ type: UPDATE_FIELD_BABY, key: "password", value }),
   onSubmit: (email, password) =>
     dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
   onUnload: () => dispatch({ type: LOGIN_PAGE_UNLOADED }),
 });
 
-class Login extends React.Component {
+class CreateBaby extends React.Component {
   constructor() {
     super();
     this.changeEmail = (event) => this.props.onChangeEmail(event.target.value);
@@ -108,4 +108,4 @@ class Login extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBaby);

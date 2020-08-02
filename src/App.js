@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
 import agent from "./agent";
 import Header from "./components/Header";
 import React from "react";
@@ -8,11 +8,13 @@ import { REDIRECT, APP_LOAD } from "./constants/actionTypes";
 import { store } from "./store";
 import { push } from "connected-react-router";
 import { Route, Switch } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Settings from "./components/Settings";
 import Sidebar from "./components/Sidebar";
+import { Container, Toolbar } from "@material-ui/core";
 
 const mapStateToProps = (state) => ({
   appLoaded: state.common.appLoaded,
@@ -50,25 +52,29 @@ class App extends React.Component {
   render() {
     if (this.props.appLoaded) {
       return (
-        <div>
+        <div style={{ display: "flex" }}>
+          <CssBaseline />
           <Header
             currentUser={this.props.currentUser}
             appName={this.props.appName}
           />
-          <div className="container-fluid">
-            <div className="row">
-              <Sidebar
-                currentUser={this.props.currentUser}
-                appName={this.props.appName}
-              />
-              <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <Route path="/settings" component={Settings} />
-                <Route exact path="/" component={Home} />
-              </Switch>
-            </div>
+          {this.props.currentUser && (
+            <Sidebar
+              currentUser={this.props.currentUser}
+              appName={this.props.appName}
+            />
+          )}
+          <div style={{ flexGrow: 1, padding: 8 }}>
+            <Toolbar />
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/settings" component={Settings} />
+              <Route exact path="/" component={Home} />
+            </Switch>
           </div>
+          {/* </div>
+          </div> */}
         </div>
       );
     }

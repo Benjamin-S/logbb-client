@@ -8,16 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const MainView = (props) => {
-  return (
-    <div className="col-md-9">
-      <div className="feed-toggle">
-        <ul className="nav nav-pills outline-active">
-          <li className="nav-item"></li>
-        </ul>
-      </div>
-      <BabyList babies={props.babies} />
-    </div>
-  );
+  return <BabyList babies={props.babies} />;
 };
 
 export default connect(mapStateToProps, () => ({}))(MainView);

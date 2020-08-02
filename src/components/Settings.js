@@ -139,7 +139,7 @@ class SettingsForm extends React.Component {
 class Settings extends React.Component {
   render() {
     return (
-      <div className="settings-page">
+      <div className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div className="container page">
           <div className="row">
             <div className="col-md-6 offset-md-3 col-xs-12">

@@ -1,13 +1,14 @@
 import React from "react";
+import { Typography, Container } from "@material-ui/core";
 
 const Banner = ({ appName }) => {
   return (
-    <div className="banner">
-      <div className="container">
-        <h1 className="logo-font">{appName.toLowerCase()}</h1>
-        <p>A place to track your baby.</p>
-      </div>
-    </div>
+    <Container maxWidth="xl">
+      <Typography variant="h2" component="h1">
+        {appName.toLowerCase()}
+      </Typography>
+      <Typography variant="subtitle1">A place to track your baby.</Typography>
+    </Container>
   );
 };
 
